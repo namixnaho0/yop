@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #c0aaff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #6b5b95;
+}
+
+#cualquiercosa {
+  background-color: white;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+#cualquiercosa p {
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #a78bfa;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 5px #c3bdfc;
+}
+
+button {
+  background-color: #a78bfa;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #9a7dff;
+  transform: scale(1.05);
+}
+
+#salida {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #f3f0ff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  color: #444;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}</style>
+  <body>
+    <header>
+      <h1>EXAMEN SORPRESA</h1>
+    </header>
+    <h3>INGRESA DOS NUMEROS</h3>
+    <div id="cualquiercosa">
+      <p>Plataforma</p>
+      <select id="dorco">
+        <option value="NETFLIX">Netflix</option>
+        <option value="DISNEY">Disney</option>
+        <option value="HBO">HBO/MAX</option>
+        <option value="PRIME">Prime</option>
+        <option value="VIX">Vix</option>
+        <option value="CRUNCHYROLL">crunch</option>
+      </select>
+      <p>Ingresa email</p>
+      <input type="text" id="imeil" />
+      <p>Ingresa contraseña</p>
+      <input type="text" id="pass" />
+      <p>Perfil No.</p>
+      <input type="number" id="perfil" />
+      <p>Fecha</p>
+      <input type="date" id="fecha" />
+      <br> 
+      <button id="btn">generarr</button>
+    </div>
+    <div id="salida">
+    
+    </div>
+    <script src="p1.js"></script>
+  </body>
+</html>
