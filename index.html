@@ -4,97 +4,145 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+      /* Fuente cute estilo cartoon */
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
 
-body {
-  font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(to right, #fdfbfb, #ebedee);
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-header {
-  background: #c0aaff;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
+      body {
+        font-family: "Fredoka", sans-serif;
+        background: #fff6fe;
+        color: #333;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
+      header {
+        background-color: #e5d4ff;
+        color: #6b008b;
+        text-align: center;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-h3 {
-  text-align: center;
-  margin-top: 2rem;
-  color: #6b5b95;
-}
+      h3 {
+        text-align: center;
+      }
 
-#cualquiercosa {
-  background-color: white;
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
+      .logo-titulo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
 
-#cualquiercosa p {
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
-  color: #444;
-}
+      .logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #b073d1;
+        background-color: #fff;
+      }
 
-input, select {
-  width: 100%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1rem;
-  background-color: #f9f9f9;
-  transition: all 0.3s ease;
-}
+      main {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-input:focus, select:focus {
-  border-color: #a78bfa;
-  background-color: #fff;
-  outline: none;
-  box-shadow: 0 0 5px #c3bdfc;
-}
+      .botones-dobles {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      .formulario {
+        background: #f5eaff;
+        padding: 25px;
+        border-radius: 50px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px; /* o el valor que prefieras */
+      }
 
-button {
-  background-color: #a78bfa;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
-  display: block;
-  margin: 0 auto;
-}
+      label {
+        font-weight: bold;
+        color: #a45fc2;
+      }
 
-button:hover {
-  background-color: #9a7dff;
-  transform: scale(1.05);
-}
+      input,
+      select {
+        padding: 10px;
+        border: 2px solid #d2aaff;
+        border-radius: 10px;
+        font-size: 1em;
+        background: #fff;
+      }
 
-#salida {
-  max-width: 500px;
-  margin: 2rem auto;
-  background-color: #f3f0ff;
-  padding: 1.5rem;
-  border-radius: 15px;
-  color: #444;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #9c4ccc;
+      }
+
+      button {
+        background-color: #d68fff;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 12px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #b259e5;
+      }
+
+      .contenedor-flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 20px;
+      }
+
+      #salida {
+        flex: 1 1 300px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        border: 2px dashed #cfa9f2;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        max-width: 400px;
+        word-wrap: break-word;
+      }
+      #salida.mostrar {
+        animation: aparecer 0.8s ease forwards;
+      }
+
+      @keyframes aparecer {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 }</style>
   <body>
     <header>
