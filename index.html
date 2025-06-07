@@ -1,180 +1,307 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-<style>
-      /* Fuente cute estilo cartoon */
-      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario Garantías</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap');
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      body {
-        font-family: "Fredoka", sans-serif;
-        background: #fff6fe;
-        color: #333;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #ffe6f0;
+      color: #4d004d;
+      padding: 20px;
+      display: block;
+    }
 
-      header {
-        background-color: #e5d4ff;
-        color: #6b008b;
-        text-align: center;
-        padding: 15px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+    header {
+      width: 100%;
+      background-color: #ffb3d9;
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      font-family: 'Fredoka One', cursive;
+      margin-bottom: 20px;
+    }
 
-      h3 {
-        text-align: center;
-      }
+    h1 {
+      color: #99004d;
+    }
 
-      .logo-titulo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-      }
+    h3 {
+      margin: 20px 0;
+      text-align: center;
+    }
 
-      .logo {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #b073d1;
-        background-color: #fff;
-      }
+    .contenedor-flex {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
 
-      main {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    #formulario {
+      background-color: #ffd6eb;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      flex: 1;
+      max-width: 380px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      order: 1; /* Opciones a la izquierda */
+    }
 
-      .botones-dobles {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-      .formulario {
-        background: #f5eaff;
-        padding: 25px;
-        border-radius: 50px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        max-width: 400px; /* o el valor que prefieras */
-      }
+    #impresion {
+      flex: 1;
+      max-width: 380px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 2; /* Impresión a la derecha */
+    }
 
-      label {
-        font-weight: bold;
-        color: #a45fc2;
-      }
+    #salida {
+      background: #fff0f5;
+      border: 2px dashed #ff80bf;
+      border-radius: 20px;
+      padding: 20px;
+      white-space: pre-line;
+      width: 100%;
+      word-break: break-word;
+    }
 
-      input,
-      select {
-        padding: 10px;
-        border: 2px solid #d2aaff;
-        border-radius: 10px;
-        font-size: 1em;
-        background: #fff;
-      }
+    label, p {
+      font-weight: bold;
+      color: #cc3399;
+    }
 
-      input:focus,
-      select:focus {
-        outline: none;
-        border-color: #9c4ccc;
-      }
+    input, select {
+      padding: 10px;
+      border: 2px solid #ff99cc;
+      border-radius: 10px;
+      font-size: 1em;
+      background: #fff;
+    }
 
-      button {
-        background-color: #d68fff;
-        color: #fff;
-        font-weight: bold;
-        border: none;
-        padding: 12px;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
+    button {
+      background-color: #ff66b3;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-      button:hover {
-        background-color: #b259e5;
-      }
+    button:hover {
+      background-color: #e60073;
+    }
 
+    .botones-dobles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    #copiarBtn {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
       .contenedor-flex {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #formulario, #impresion {
         width: 100%;
-        padding: 20px;
+        max-width: 100%;
       }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GENERADOR</h1>
+  </header>
+  <h3>INGRESA TUS DATOS</h3>
 
-      #salida {
-        flex: 1 1 300px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 20px;
-        border: 2px dashed #cfa9f2;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        max-width: 400px;
-        word-wrap: break-word;
-      }
-      #salida.mostrar {
-        animation: aparecer 0.8s ease forwards;
-      }
-
-      @keyframes aparecer {
-        from {
-          opacity: 0;
-          transform: scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-}
-</style>
-  <body>
-    <header>
-      <h1>EXAMEN SORPRESA</h1>
-    </header>
-    <h3>INGRESA DOS NUMEROS</h3>
-    <div id="cualquiercosa">
+  <div class="contenedor-flex">
+    <div id="formulario">
       <p>Plataforma</p>
       <select id="dorco">
         <option value="NETFLIX">Netflix</option>
         <option value="DISNEY">Disney</option>
-        <option value="HBO">HBO/MAX</option>
+        <option value="HBO">HBO/Max</option>
         <option value="PRIME">Prime</option>
         <option value="VIX">Vix</option>
-        <option value="CRUNCHYROLL">crunch</option>
+        <option value="CRUNCHYROLL">Crunchyroll</option>
+        <option value="PARAMOUNT">Paramount</option>
       </select>
+
       <p>Ingresa email</p>
       <input type="text" id="imeil" />
+
       <p>Ingresa contraseña</p>
       <input type="text" id="pass" />
-      <p>Perfil No.</p>
-      <input type="number" id="perfil" />
-      <p>Fecha</p>
-      <input type="date" id="fecha" />
-      <br> 
-      <button id="btn">generarr</button>
+
+      <div class="botones-dobles">
+        <button id="btnPerfil">PERFIL</button>
+        <button id="btnCompleta">COMPLETA</button>
+        <button id="btnGarantia">GARANTÍAS</button>
+      </div>
+
+      <div id="opcionesPerfil" style="display:none;">
+        <label for="perfil">Selecciona perfil:</label>
+        <select id="perfil">
+          <option value="P1">P1</option>
+          <option value="P2">P2</option>
+          <option value="P3">P3</option>
+          <option value="P4">P4</option>
+          <option value="P5">P5</option>
+          <option value="P6">P6</option>
+          <option value="P7">P7</option>
+        </select>
+      </div>
+
+      <div id="mensajeCompleta" style="display:none; font-weight:bold; color:#cc3399;">
+        Se ha seleccionado COMPLETA
+      </div>
+
+      <div id="campoGarantia" style="display:none;">
+        <label for="correoGarantia">GARANTÍA DE:</label>
+        <input type="text" id="correoGarantia" placeholder="Correo de Garantía" />
+      </div>
+
+      <div class="botones-dobles">
+        <button id="btnGenerar">GENERAR</button>
+        <button id="btnLimpiar">LIMPIAR TODO</button>
+      </div>
     </div>
-    <div id="salida">
-    
+
+    <div id="impresion">
+      <div id="salida"></div>
+      <button id="copiarBtn">📋 Copiar todo</button>
     </div>
-    <script src="p1.js"></script>
-  </body>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cuenta = document.getElementById("dorco");
+      const correo = document.getElementById("imeil");
+      const contra = document.getElementById("pass");
+      const perfilSelect = document.getElementById("perfil");
+      const salida = document.getElementById("salida");
+      const correoGarantia = document.getElementById("correoGarantia");
+      const btnCopiar = document.getElementById("copiarBtn");
+
+      const opcionesPerfil = document.getElementById("opcionesPerfil");
+      const mensajeCompleta = document.getElementById("mensajeCompleta");
+      const campoGarantia = document.getElementById("campoGarantia");
+
+      document.getElementById("btnPerfil").addEventListener("click", () => {
+        opcionesPerfil.style.display = "block";
+        mensajeCompleta.style.display = "none";
+      });
+
+      document.getElementById("btnCompleta").addEventListener("click", () => {
+        opcionesPerfil.style.display = "none";
+        mensajeCompleta.style.display = "block";
+      });
+
+      document.getElementById("btnGarantia").addEventListener("click", () => {
+        campoGarantia.style.display = "block";
+      });
+
+      document.getElementById("btnLimpiar").addEventListener("click", () => {
+        salida.innerHTML = "";
+        correo.value = "";
+        contra.value = "";
+        perfilSelect.value = "P1";
+        correoGarantia.value = "";
+        opcionesPerfil.style.display = "none";
+        mensajeCompleta.style.display = "none";
+        campoGarantia.style.display = "none";
+      });
+
+      document.getElementById("btnGenerar").addEventListener("click", () => {
+        const gc = correo.value;
+        const gc2 = cuenta.value;
+        const gc3 = contra.value;
+        const perfil = opcionesPerfil.style.display === "block" ? perfilSelect.value : "Completa";
+        const garantiaCorreo = correoGarantia.value;
+
+        const hoy = new Date();
+        const fecha = hoy.toLocaleDateString("es-MX", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        });
+
+        const lineas = [];
+
+        lineas.push(
+          "━━━━━━━━━━━━━━🌙˖˚₊˚｡°✩L𝓤𝓝𝓐𝓛𝓘 𝓢𝓣𝓡𝓔𝓐𝓜𝓘𝓝𝓖✩°｡˚₊˚˖🌙━━━━━━━━━━━━━━",
+          "💫 " + gc2 + " 💫"
+        );
+
+        if (garantiaCorreo) {
+          lineas.push("> GARANTÍA DE: " + garantiaCorreo);
+        }
+
+        lineas.push(
+          "📧Correo: " + gc,
+          "🔑Contraseña: " + gc3,
+          "👤Perfil: " + perfil,
+          "📅 Fecha de entrega: " + fecha,
+          "━━━━━━━━━━━━━━🌸 𝓡𝓔𝓖𝓛𝓐𝓢 𝓓𝓔 𝓖𝓐𝓡𝓐𝓝𝓣𝓘́𝓐 🌸━━━━━━━━━━━━━━",
+          "✔ No modificar datos de la cuenta o perfil ❌",
+          "✔ No cambiar número o nombre del perfil",
+          "✔ Puedes personalizar con PIN o cambiar el ícono 🌈",
+          "✔ Un solo dispositivo 📱",
+          "✔ 12 Hrs para confirmar acceso, después es REPORTE 🚨",
+          "━━━━━━━━━━━━━━━━━━🌷 𝓖𝓡𝓐𝓒𝓘𝓐𝓢 𝓟𝓞𝓡 𝓔𝓛𝓔𝓖𝓘𝓡𝓝𝓞𝓢 🌷━━━━━━━━━━━━━━━━━━"
+        );
+
+        salida.innerHTML = "";
+        lineas.forEach((texto) => {
+          const p = document.createElement("p");
+          p.textContent = texto;
+          salida.appendChild(p);
+        });
+      });
+
+      btnCopiar.addEventListener("click", () => {
+        const texto = Array.from(salida.querySelectorAll("p"))
+          .map(p => p.textContent)
+          .join("\n");
+
+        navigator.clipboard.writeText(texto)
+          .then(() => {
+            btnCopiar.textContent = "✅ Copiado!";
+            setTimeout(() => btnCopiar.textContent = "📋 Copiar todo", 2000);
+          })
+          .catch(() => {
+            btnCopiar.textContent = "❌ Error al copiar";
+          });
+      });
+    });
+  </script>
+</body>
 </html>
