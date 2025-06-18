@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario Garantías</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
     * {
       box-sizing: border-box;
@@ -15,107 +15,101 @@
 
     body {
       font-family: 'Quicksand', sans-serif;
-      background: #ffe6f0;
-      color: #4d004d;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      min-height: 100vh;
       padding: 20px;
-      display: block;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     header {
-      width: 100%;
-      background-color: #ffb3d9;
-      text-align: center;
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      font-family: 'Fredoka One', cursive;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      color: #99004d;
-    }
-
-    h3 {
-      margin: 20px 0;
+      padding: 20px 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      color: #fff;
       text-align: center;
+      font-size: 2em;
+      font-weight: bold;
     }
 
     .contenedor-flex {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
+      gap: 30px;
       flex-wrap: wrap;
+      justify-content: center;
       width: 100%;
+      max-width: 1000px;
     }
 
-    #formulario {
-      background-color: #ffd6eb;
+    #formulario, #impresion {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
       flex: 1;
-      max-width: 380px;
       min-width: 280px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      order: 1; /* Opciones a la izquierda */
+      max-width: 450px;
     }
 
-    #impresion {
-      flex: 1;
-      max-width: 380px;
-      min-width: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      order: 2; /* Impresión a la derecha */
-    }
-
-    #salida {
-      background: #fff0f5;
-      border: 2px dashed #ff80bf;
-      border-radius: 20px;
-      padding: 20px;
-      white-space: pre-line;
-      width: 100%;
-      word-break: break-word;
+    h3 {
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #000;
     }
 
     label, p {
+      color: #222;
       font-weight: bold;
-      color: #cc3399;
+      margin-top: 10px;
     }
 
     input, select {
+      width: 100%;
       padding: 10px;
-      border: 2px solid #ff99cc;
-      border-radius: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
       font-size: 1em;
-      background: #fff;
     }
 
     button {
-      background-color: #ff66b3;
+      background-color: #6c5ce7;
       color: white;
-      border: none;
       padding: 10px;
+      border: none;
       border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #e60073;
+      background-color: #4834d4;
     }
 
     .botones-dobles {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
+      flex-wrap: wrap;
       justify-content: center;
+      margin-top: 15px;
+    }
+
+    #salida {
+      white-space: pre-line;
+      border-radius: 12px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      max-height: 400px;
+      overflow-y: auto;
+      font-size: 0.95em;
     }
 
     #copiarBtn {
@@ -126,25 +120,17 @@
     @media screen and (max-width: 768px) {
       .contenedor-flex {
         flex-direction: column;
-        align-items: center;
-      }
-
-      #formulario, #impresion {
-        width: 100%;
-        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>GENERADOR</h1>
-  </header>
-  <h3>INGRESA TUS DATOS</h3>
+  <header>GENERADOR</header>
+  <h3>Ingresa tus datos</h3>
 
   <div class="contenedor-flex">
     <div id="formulario">
-      <p>Plataforma</p>
+      <label>Plataforma</label>
       <select id="dorco">
         <option value="NETFLIX">Netflix</option>
         <option value="DISNEY">Disney</option>
@@ -155,10 +141,10 @@
         <option value="PARAMOUNT">Paramount</option>
       </select>
 
-      <p>Ingresa email</p>
+      <label>Email</label>
       <input type="text" id="imeil" />
 
-      <p>Ingresa contraseña</p>
+      <label>Contraseña</label>
       <input type="text" id="pass" />
 
       <div class="botones-dobles">
@@ -180,13 +166,13 @@
         </select>
       </div>
 
-      <div id="mensajeCompleta" style="display:none; font-weight:bold; color:#cc3399;">
+      <div id="mensajeCompleta" style="display:none; color: #333; font-weight: bold;">
         Se ha seleccionado COMPLETA
       </div>
 
       <div id="campoGarantia" style="display:none;">
-        <label for="correoGarantia">GARANTÍA DE:</label>
-        <input type="text" id="correoGarantia" placeholder="Correo de Garantía" />
+        <label for="correoGarantia">Correo de Garantía:</label>
+        <input type="text" id="correoGarantia" />
       </div>
 
       <div class="botones-dobles">
@@ -215,6 +201,8 @@
       const mensajeCompleta = document.getElementById("mensajeCompleta");
       const campoGarantia = document.getElementById("campoGarantia");
 
+      let garantiaVisible = false;
+
       document.getElementById("btnPerfil").addEventListener("click", () => {
         opcionesPerfil.style.display = "block";
         mensajeCompleta.style.display = "none";
@@ -226,7 +214,8 @@
       });
 
       document.getElementById("btnGarantia").addEventListener("click", () => {
-        campoGarantia.style.display = "block";
+        garantiaVisible = !garantiaVisible;
+        campoGarantia.style.display = garantiaVisible ? "block" : "none";
       });
 
       document.getElementById("btnLimpiar").addEventListener("click", () => {
@@ -238,26 +227,20 @@
         opcionesPerfil.style.display = "none";
         mensajeCompleta.style.display = "none";
         campoGarantia.style.display = "none";
+        garantiaVisible = false;
       });
 
       document.getElementById("btnGenerar").addEventListener("click", () => {
-        const gc = correo.value;
+        const gc = correo.value.trim();
         const gc2 = cuenta.value;
-        const gc3 = contra.value;
+        const gc3 = contra.value.trim();
         const perfil = opcionesPerfil.style.display === "block" ? perfilSelect.value : "Completa";
-        const garantiaCorreo = correoGarantia.value;
-
-        const hoy = new Date();
-        const fecha = hoy.toLocaleDateString("es-MX", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit"
-        });
+        const garantiaCorreo = garantiaVisible ? correoGarantia.value.trim() : "";
 
         const lineas = [];
 
         lineas.push(
-          "━━━━━━━━━━━━━━🌙˖˚₊˚｡°✩L𝓤𝓝𝓐𝓛𝓘 𝓢𝓣𝓡𝓔𝓐𝓜𝓘𝓝𝓖✩°｡˚₊˚˖🌙━━━━━━━━━━━━━━",
+          "━━━━━━━━━━━━━━🌙˖˚₊˚｡°✩LUNALI STREAMING✩°｡˚₊˚˖🌙━━━━━━━━━━━━━━",
           "💫 " + gc2 + " 💫"
         );
 
@@ -266,17 +249,19 @@
         }
 
         lineas.push(
-          "📧Correo: " + gc,
-          "🔑Contraseña: " + gc3,
-          "👤Perfil: " + perfil,
-          "📅 Fecha de entrega: " + fecha,
-          "━━━━━━━━━━━━━━🌸 𝓡𝓔𝓖𝓛𝓐𝓢 𝓓𝓔 𝓖𝓐𝓡𝓐𝓝𝓣𝓘́𝓐 🌸━━━━━━━━━━━━━━",
-          "✔ No modificar datos de la cuenta o perfil ❌",
+          "📧 Correo: " + gc,
+          "🔑 Contraseña: " + gc3,
+          "👤 Perfil: " + perfil,
+          "━━━━━━━━━━━━━━🌸 REGLAS DE GARANTÍA 🌸━━━━━━━━━━━━━━",
+          "📆 25 días de garantía desde el momento del acceso",
+          "✔ No modificar datos de la cuenta o nombre de perfil ❌",
           "✔ No cambiar número o nombre del perfil",
           "✔ Puedes personalizar con PIN o cambiar el ícono 🌈",
           "✔ Un solo dispositivo 📱",
           "✔ 12 Hrs para confirmar acceso, después es REPORTE 🚨",
-          "━━━━━━━━━━━━━━━━━━🌷 𝓖𝓡𝓐𝓒𝓘𝓐𝓢 𝓟𝓞𝓡 𝓔𝓛𝓔𝓖𝓘𝓡𝓝𝓞𝓢 🌷━━━━━━━━━━━━━━━━━━"
+          "📩 Reportes en este enlace:",
+          "https://forms.gle/Y7sHyL7Gouchfwuc8",
+          "━━━━━━━━━━━━━━━━━━🌷 GRACIAS POR ELEGIRNOS 🌷━━━━━━━━━━━━━━━━━━"
         );
 
         salida.innerHTML = "";
@@ -305,3 +290,4 @@
   </script>
 </body>
 </html>
+
