@@ -237,11 +237,18 @@
         const perfil = opcionesPerfil.style.display === "block" ? perfilSelect.value : "Completa";
         const garantiaCorreo = garantiaVisible ? correoGarantia.value.trim() : "";
 
+        const fechaHoy = new Date().toLocaleDateString('es-MX', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
         const lineas = [];
 
         lineas.push(
           "━━━━━━━━━━━━━━🌙˖˚₊˚｡°✩LUNALI STREAMING✩°｡˚₊˚˖🌙━━━━━━━━━━━━━━",
-          "💫 " + gc2 + " 💫"
+          "💫 " + gc2 + " 💫",
+          "📅 Fecha: " + fechaHoy
         );
 
         if (garantiaCorreo) {
@@ -252,8 +259,14 @@
           "📧 Correo: " + gc,
           "🔑 Contraseña: " + gc3,
           "👤 Perfil: " + perfil,
-          "━━━━━━━━━━━━━━🌸 REGLAS DE GARANTÍA 🌸━━━━━━━━━━━━━━",
-          "📆 25 días de garantía desde el momento del acceso",
+          "━━━━━━━━━━━━━━🌸 REGLAS DE GARANTÍA 🌸━━━━━━━━━━━━━━"
+        );
+
+        if (!garantiaVisible) {
+          lineas.push("📆 25 días de garantía desde el momento del acceso");
+        }
+
+        lineas.push(
           "✔ No modificar datos de la cuenta o nombre de perfil ❌",
           "✔ Un solo dispositivo 📱",
           "✔ 12 Hrs para confirmar acceso, después es REPORTE 🚨",
