@@ -265,11 +265,17 @@
   function definirCantidadPerfiles(){
     const cod = plataformaInput.value.trim().toLowerCase();
     if(cod === 's'){
-      // Spotify: sin perfiles visibles ni clickeables
+      // Spotify: sin perfiles visibles ni clickeables y mostrar salida inmediata
       crearBotonesPerfil(0);
       setPerfilesVisible(false);
+      actualizarSalida();
       return;
     }
+    setPerfilesVisible(true);
+    if(cod === 'd') crearBotonesPerfil(7);
+    else if(cod === 'p' || cod === 'pr') crearBotonesPerfil(6);
+    else crearBotonesPerfil(5);
+  }
     setPerfilesVisible(true);
     if(cod === 'd') crearBotonesPerfil(7);
     else if(cod === 'p' || cod === 'pr') crearBotonesPerfil(6);
@@ -299,26 +305,52 @@
    🍒 𝓢𝓟𝓞𝓣𝓘𝓕𝓎 • ${obtenerFechaFormateada()} 🍓
 
 ⏳ *TIENEN 40 MINUTOS PARA REVISAR SUS CUENTAS, DESPUÉS ENTRA A REPORTE 🚨*
-💖 NO CAMBIAR DATOS
+> 🍒 𝓖𝓻𝓾𝓹𝓸 𝓭𝓮 𝓡𝓮𝓹𝓸𝓻𝓽𝓮𝓼: https://forms.gle/Y7sHyL7Gouchfwuc8
 
-> 🍒 𝓡𝓮𝓹𝓸𝓻𝓽𝓮𝓼: https://forms.gle/Y7sHyL7Gouchfwuc8
-
+💖 NO CAMBIAR DATOS.
 ╚══════════🍓 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🍓══════════╝`;
     return texto;
   }
 
   function actualizarSalida(){
     const cod = plataformaInput.value.trim().toLowerCase();
+
+    // Spotify: bloquear perfiles y mostrar SOLO el bloque de reportes SIEMPRE
+    if(cod === 's'){
+      salida.textContent = salidaSoloReportes();
+      return;
+    }
+
     const plataforma = interpretarPlataforma(cod);
     const correo = correoInput.value.trim();
     const contrasena = contrasenaInput.value.trim();
     const tipo = tipoInput.value.trim().toLowerCase();
 
-    // Spotify: bloquear perfiles y mostrar SOLO el bloque de reportes
-    if(cod === 's'){
-      salida.textContent = salidaSoloReportes();
+    if(!plataforma || !correo || !contrasena){
+      salida.textContent = '';
       return;
     }
+
+    const perfilTexto = (tipo === 'c') ? '𝓒𝓸𝓶𝓹𝓵𝓮𝓽𝓪' : perfilSeleccionado;
+
+    const texto = 
+`╔══════════🌙 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 🌙══════════╗
+    🍒 ${interpretarPlataforma(cod)} • ${obtenerFechaFormateada()} 🍓
+
+📧 𝓒𝓸𝓻𝓻𝓮𝓸:  ${correo}
+🔐 𝓒𝓸𝓷𝓽𝓪𝓼𝓮ñ𝓪:  ${contrasena}
+👤 𝓟𝓮𝓻𝓯𝓲𝓵:  ${perfilTexto}
+
+╠════════════════🍓 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🍒═════════════════╣
+⏳ *CONFIRMA TU ACCESO EN 40 MINUTOS, DESPUÉS DE ESTE TIEMPO ENTRARÁ A REPORTE🚨*
+🌸 𝟤𝟧 DÍAS DE GARANTÍA DESDE EL ACCESO
+💖 NO CAMBIAR CONTRASEÑA O CORREO NI DATOS DEL PERFIL SIN PERMISO
+${reglasDispositivos(tipo)}
+> 🍒 𝓡𝓮𝓹𝓸𝓻𝓽𝓮𝓼: https://forms.gle/Y7sHyL7Gouchfwuc8
+╚══════════🍓 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🍓══════════╝`;
+
+    salida.textContent = texto;
+  }
 
     if(!plataforma || !correo || !contrasena){
       salida.textContent = '';
