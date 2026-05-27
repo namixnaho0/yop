@@ -1,349 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GENERA</title>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #72c7ff 0%, #1a4ea8 100%);
-    color: #1a237e;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-  }
-  #contenedor-principal {
-    background: #f0f8ff;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: row;
-    width: 900px;
-    max-width: 100%;
-    overflow: hidden;
-  }
-  #formulario-container, #salida-container {
-    padding: 1.5rem 2rem;
-    width: 50%;
-    box-sizing: border-box;
-  }
-  #formulario-container {
-    background: #e3f2fd;
-    border-right: 3px solid #1976d2;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  #formulario-container h2 {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #0d47a1;
-    text-align: center;
-    text-shadow: 1px 1px 2px #82b1ff;
-  }
-  input[type="text"] {
-    border-radius: 12px;
-    border: 2px solid #90caf9;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-    outline-offset: 2px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  input[type="text"]:focus {
-    border-color: #0d47a1;
-    background: #bbdefb;
-  }
-  #guia {
-    background: #bbdefb;
-    border-left: 6px solid #1976d2;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: #0d47a1;
-    user-select: none;
-  }
-  #salida-container {
-    background: #ffffffcc;
-    border-radius: 0 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  #salida {
-    white-space: pre-wrap;
-    font-size: 1rem;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 1rem;
-    background: #e3f2fd;
-    border-radius: 15px;
-    min-height: 250px;
-    box-shadow: inset 0 0 10px #90caf9;
-    color: #0d47a1;
-    overflow-y: auto;
-    line-height: 1.3;
-  }
-  #selecciona {
-    margin-top: 1rem;
-    text-align: center;
-    font-weight: 700;
-    color: #1976d2;
-    user-select: none;
-    font-size: 1rem;
-    text-shadow: 1px 1px 1px #a3cdfd;
-  }
-  #perfilBtns {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0.5rem 0 1rem;
-  }
-  #perfilBtns button {
-    background-color: #90caf9;
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: #0d47a1;
-    box-shadow: 0 3px 6px rgba(33, 150, 243, 0.4);
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-  #perfilBtns button.active {
-    background-color: #1976d2;
-    color: white;
-    cursor: default;
-    box-shadow: 0 0 10px #0d47a1;
-  }
-  #perfilBtns button:hover:not(.active) {
-    background-color: #64b5f6;
-  }
-  #copiarBtn {
-    align-self: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 700;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 6px 15px rgba(25, 118, 210, 0.7);
-    transition: background-color 0.3s ease;
-    user-select: none;
-    margin-bottom: 1rem;
-  }
-  #copiarBtn:hover {
-    background-color: #0d47a1;
-  }
-
-  /* 📱 Responsivo */
-  @media (max-width: 768px) {
-    #contenedor-principal {
-      flex-direction: column;
-      width: 100%;
-      border-radius: 15px;
-    }
-    #formulario-container, 
-    #salida-container {
-      width: 100%;
-      border-right: none;
-      border-radius: 0;
-      padding: 1rem;
-    }
-    #salida-container {
-      border-top: 3px solid #1976d2;
-    }
-    #salida {
-      font-size: 0.95rem;
-      min-height: 180px;
-      padding: 0.8rem;
-    }
-    input[type="text"] {
-      font-size: 0.9rem;
-      padding: 0.6rem;
-    }
-    #copiarBtn {
-      font-size: 0.95rem;
-      padding: 0.6rem 1.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #formulario-container h2 {
-      font-size: 1.2rem;
-    }
-    #guia {
-      font-size: 0.8rem;
-      padding: 0.6rem 1rem;
-    }
-    #perfilBtns button {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
-    }
-  }
+body{
+  font-family: 'Segoe UI', sans-serif;
+  background:#111;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.container{
+  width:380px;
+}
+textarea, input{
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#000;
+  color:#fff;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+  border:none;
+  border-radius:12px;
+  background:#ff4d88;
+  color:white;
+  cursor:pointer;
+}
+button:hover{
+  background:#e6005c;
+}
+.result{
+  margin-top:12px;
+  background:#000;
+  padding:12px;
+  border-radius:12px;
+  white-space:pre-line;
+  border:1px solid #333;
+}
+#numeroTexto{
+  margin-top:10px;
+  font-size:18px;
+  color:#00ffcc;
+  text-align:center;
+}
 </style>
 </head>
+
 <body>
-  <div id="contenedor-principal">
-    <div id="formulario-container">
-      <h2>GENERADOR</h2>
-      <div id="guia">
-        <strong>Guía de uso:</strong>
-        <ul>
-          <li><code>n</code>: Netflix</li>
-          <li><code>m</code>: Max</li>
-          <li><code>p</code>: Prime Video</li>
-          <li><code>pr</code>: Paramount+</li>
-          <li><code>v</code>: Vix</li>
-          <li><code>c</code>: Crunchyroll</li>
-          <li><code>d</code>: Disney+</li>
-        </ul>
-        <p>En "Tipo", escribe <code>c</code> para COMPLETA, si no, selecciona perfil abajo.</p>
-      </div>
 
-      <input type="text" id="plataforma" placeholder="Plataforma (n, m, p, pr, v, c, d)" autocomplete="off" />
-      <input type="text" id="correo" placeholder="Correo" autocomplete="off" />
-      <input type="text" id="contrasena" placeholder="Contraseña" autocomplete="off" />
-      <input type="text" id="tipo" placeholder="Tipo (escribe 'c' para COMPLETA)" autocomplete="off" />
-    </div>
+<div class="container">
+<h2>🌸 LUNALI STORE 🌸</h2>
 
-    <div id="salida-container">
-      <div id="salida" aria-live="polite" role="region" aria-label="Resultado"></div>
-      <p id="selecciona">Selecciona el perfil</p>
-      <div id="perfilBtns" role="group" aria-label="Botones de perfiles"></div>
-      <button id="copiarBtn" aria-label="Copiar texto generado">📋 Copiar todo</button>
-    </div>
-  </div>
+<textarea id="input" placeholder="Pega aquí el texto..."></textarea>
+
+<input id="correoNuevo" placeholder="Correo">
+<input id="password" placeholder="Contraseña">
+
+<button onclick="procesar()">Generar</button>
+<button onclick="copiar()">Copiar texto</button>
+<button onclick="enviarWhats()">Enviar a WhatsApp</button>
+<button onclick="copiarNumero()">Copiar número</button>
+
+<div id="numeroTexto"></div>
+
+<div class="result" id="output"></div>
+</div>
 
 <script>
-  const plataformaInput = document.getElementById('plataforma');
-  const correoInput = document.getElementById('correo');
-  const contrasenaInput = document.getElementById('contrasena');
-  const tipoInput = document.getElementById('tipo');
-  const salida = document.getElementById('salida');
-  const perfilBtns = document.getElementById('perfilBtns');
-  const copiarBtn = document.getElementById('copiarBtn');
 
-  let perfilSeleccionado = 'P1';
+function limpiarNumero(num){
+  if(!num) return "";
+  num = num.replace(/\D/g,"");
+  if(num.startsWith("52") && num.length > 10){
+    num = num.slice(2);
+  }
+  return num;
+}
 
-  const plataformas = {
-    n: '𝓝𝓔𝓣𝓕𝓛𝓘𝓧',
-    m: '𝓜𝓐𝓧 / 𝓗𝓑𝓞',
-    p: '𝓟𝓡𝓘𝓜𝓔',
-    pr: '𝓟𝓐𝓡𝓐𝓜𝓞𝓤𝓝𝓣',
-    v: '𝓥𝓘𝓧',
-    c: '𝓒𝓡𝓤𝓝𝓒𝓗𝓨𝓡𝓞𝓛𝓛',
-    d: '𝓓𝓘𝓢𝓝𝓔𝓨'
-  };
+function procesar(){
+  let text = document.getElementById("input").value;
 
-
-
-  function crearBotonesPerfil(max) {
-    perfilBtns.innerHTML = '';
-    for(let i=1; i<=max; i++){
-      const btn = document.createElement('button');
-      btn.textContent = `𝙋${i}`;
-      btn.dataset.perfil = `P${i}`;
-      if(i === 1) btn.classList.add('active');
-      btn.addEventListener('click', () => {
-        if(tipoInput.value.trim().toLowerCase() === 'c') return;
-        document.querySelectorAll('#perfilBtns button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        perfilSeleccionado = btn.dataset.perfil;
-        actualizarSalida();
-      });
-      perfilBtns.appendChild(btn);
-    }
+  if(!text){
+    alert("Pega texto primero");
+    return;
   }
 
-  function definirCantidadPerfiles(){
-    const cod = plataformaInput.value.trim().toLowerCase();
-    if(cod === 'd') crearBotonesPerfil(7);
-    else if(cod === 'p' || cod === 'pr') crearBotonesPerfil(6);
-    else crearBotonesPerfil(5);
+  let limpio = text.replace(/(\d)([a-zA-Z])/g, "$1 $2");
+
+  // 📞 número
+  let numeros = limpio.match(/\d{10,13}/g);
+  let numeroFinal = numeros ? limpiarNumero(numeros[0]) : "";
+
+  document.getElementById("numeroTexto").innerText =
+    numeroFinal ? "📞 Número: " + numeroFinal : "❌ No detectado";
+
+  // 📧 correo (MEJORADO)
+  let correos = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g);
+  let correoCaida = "";
+  if(correos){
+    correoCaida = correos.sort((a,b)=>{
+      return b.split("@")[0].length - a.split("@")[0].length;
+    })[0];
   }
 
-  function interpretarPlataforma(cod){
-    return plataformas[cod] || '';
+  // 📅 fechas
+  let fechas = limpio.match(/\d{1,2}\/\d{1,2}\/\d{4}/g);
+  let fechaCompra = fechas ? fechas[1] : "";
+
+  let correoNuevo = document.getElementById("correoNuevo").value;
+  let password = document.getElementById("password").value;
+
+  let t = limpio.toLowerCase();
+
+  // 💳 plan
+  let plan = "";
+  if(/anual/i.test(limpio)){
+    plan = " - Anual";
   }
 
-  function obtenerFechaFormateada(){
-    const fecha = new Date();
-    const opciones = { day: '2-digit', month: 'short', year: 'numeric' };
-    return fecha.toLocaleDateString('es-ES', opciones).replace('.', '');
+  // 🎬 plataforma
+  let plataforma = "No detectado";
+
+  if(/netflix/i.test(limpio)) plataforma = "Netflix";
+  else if(/prime|primevideo|amazon/i.test(limpio)) plataforma = "Prime Video";
+  else if(/disney/i.test(limpio)) plataforma = "Disney+";
+  else if(/vix/i.test(limpio)) plataforma = "Vix";
+  else if(/paramount/i.test(limpio)) plataforma = "Paramount+";
+  else if(/crunchy/i.test(limpio)) plataforma = "Crunchyroll";
+  else if(/spotify/i.test(limpio)) plataforma = "Spotify";
+
+  let tipo = t.includes("perfil") ? "Perfil" : "Completa";
+
+  let hoy = new Date().toLocaleDateString("es-MX");
+
+let resultado =
+`✿✧ *LUNALI STORE* ✧✿
+✿ Garantia entregada: ${hoy}
+✧ ${plataforma}${plan} (${tipo})
+
+> CAIDA: ${correoCaida}
+✧ F.COMPRA: ${fechaCompra}
+
+✿✧ *REEMPLAZO* ✧✿
+✉ Correo: ${correoNuevo}
+✧ Contraseña: ${password}
+
+✿ Usar perfil asignado
+✧ Dudas con admin en turno`;
+
+  document.getElementById("output").innerText = resultado;
+}
+
+function copiar(){
+  navigator.clipboard.writeText(document.getElementById("output").innerText);
+}
+
+function copiarNumero(){
+  let texto = document.getElementById("numeroTexto").innerText;
+  let numero = texto.replace(/\D/g,"");
+  navigator.clipboard.writeText(numero);
+}
+
+// 🔥 FIX EMOJIS WHATSAPP
+function enviarWhats(){
+  let mensaje = document.getElementById("output").innerText;
+  let numero = document.getElementById("numeroTexto").innerText.replace(/\D/g,"");
+
+  if(!numero){
+    alert("No hay número");
+    return;
   }
 
-  function actualizarSalida(){
-    const cod = plataformaInput.value.trim().toLowerCase();
-    const plataforma = interpretarPlataforma(cod);
-    const correo = correoInput.value.trim();
-    const contrasena = contrasenaInput.value.trim();
-    const tipo = tipoInput.value.trim().toLowerCase();
-
-    if(!plataforma || !correo || !contrasena){
-      salida.textContent = '';
-      return;
-    }
-
-    const perfilTexto = (tipo === 'c') ? '𝓒𝓸𝓶𝓹𝓵𝓮𝓽𝓪' : perfilSeleccionado;
-
-    const texto = 
-`╔══════════🌙 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 🌙══════════╗
-    🍒 ${plataforma} • ${obtenerFechaFormateada()} 🍓
-
-📧 𝓒𝓸𝓻𝓻𝓮𝓸:  ${correo}
-🔐 𝓒𝓸𝓷𝓽𝓻𝓪𝓼𝓮ñ𝓪:  ${contrasena}
-👤 𝓟𝓮𝓻𝓯𝓲𝓵:  ${perfilTexto}
-
-╠════════════════🍓 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🍒═════════════════╣
-⏳ *CONFIRMA TU ACCESO EN 40 MINUTOS, DESPUES DE ESTE TIEMPO ENTRARA A REPORTE🚨*
-🌸 𝟤𝟧 DIAS DE GARANTIA DESDE EL ACCESO
-💖 NO CAMBIAR CONTRASEÑA O CORREO NI DATOS DEL PERFIL SIN PERMISO
-🌙 UN SOLO DISPOSITIVO
-> 🍒 𝓡𝓮𝓹𝓸𝓻𝓽𝓮𝓼: https://forms.gle/Y7sHyL7Gouchfwuc8
-╚══════════🍓 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🍓══════════╝`;
-
-    salida.textContent = texto;
-  }
-
-  [plataformaInput, correoInput, contrasenaInput, tipoInput].forEach(input => {
-    input.addEventListener('input', () => {
-      definirCantidadPerfiles();
-      if(tipoInput.value.trim().toLowerCase() === 'c'){
-        perfilBtns.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-      } else {
-        if(!document.querySelector('#perfilBtns button.active')){
-          perfilSeleccionado = 'P1';
-          perfilBtns.querySelector('button')?.classList.add('active');
-        }
-      }
-      actualizarSalida();
-    });
-  });
-
-  copiarBtn.addEventListener('click', () => {
-    if(salida.textContent.trim().length === 0) return;
-    navigator.clipboard.writeText(salida.textContent).then(() => {
-      copiarBtn.textContent = "✅ Copiado!";
-      setTimeout(() => copiarBtn.textContent = "📋 Copiar todo", 2000);
-    });
-  });
-
-  // Inicializamos con 5 perfiles
-  crearBotonesPerfil(5);
-  actualizarSalida();
+  let url = `https://wa.me/52${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
 
 </script>
+
 </body>
 </html>
-
